@@ -89,12 +89,14 @@ body {
     backdrop-filter: blur(10px) saturate(120%);
 }
 
-/* small screens */
-@media (max-width: 500px) {
+/* Small screens (phones) */
+@media (max-width: 800px) {
     .card {
         grid-template-columns: 1fr;
-        padding: 20px;
-        max-width: 100%; /* full width on small devices */
+        padding: 15px;               /* Optional: slightly reduce padding */
+        width: 90%;                  /* Make it a bit smaller than full width */
+        max-width: 400px;            /* Set a maximum width for the box */
+        margin: 0 auto;              /* Center the card horizontally */
         box-sizing: border-box;
     }
 }
