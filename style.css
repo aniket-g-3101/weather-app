@@ -90,7 +90,7 @@ body {
 }
 
 /* small screens */
-@media (max-width: 700px) {
+@media (max-width: 500px) {
     .card {
         grid-template-columns: 1fr;
         padding: 20px;
