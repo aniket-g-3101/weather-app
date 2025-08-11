@@ -94,7 +94,7 @@ body {
     .card {
         grid-template-columns: 1fr;
         padding: 20px;
-      height: 85vh;          
+      height: 70vh;
         margin: 5vh auto;   
         box-sizing: border-box;
           overflow: auto; 
