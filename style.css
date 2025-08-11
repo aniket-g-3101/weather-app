@@ -96,7 +96,6 @@ body {
         padding: 20px;
       height: 70vh;           /* 70% of screen height */
         margin: 5vh auto;   
-        max-width: 70%; /* full width on small devices */
         box-sizing: border-box;
           overflow: auto; 
     }
