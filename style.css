@@ -94,13 +94,8 @@ body {
     .card {
         grid-template-columns: 1fr;
         padding: 20px;
-      height: 85vh;
-      width: 90vh;
-      max-width: 90vw;
-      max-height: 85vh;
-        margin: 5vh auto;   
+        max-width: 100%; /* full width on small devices */
         box-sizing: border-box;
-          overflow: auto; 
     }
 }
 
@@ -402,8 +397,7 @@ p.lead {
     justify-content: flex-end; /* align right */
     align-items: center;
     gap: 15px;
-    border-radius:1.5cap;
-    border-radius:1.5cap;
+    border-radius:1cap;
     background: rgba(93, 96, 124, 0.371);  
     padding: 10px 16px;
     z-index: 1000; /* on top */
