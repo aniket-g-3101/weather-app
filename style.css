@@ -94,7 +94,7 @@ body {
     .card {
         grid-template-columns: 1fr;
         padding: 20px;
-        max-width: 100%; /* full width on small devices */
+        max-width: auto; /* full width on small devices */
         box-sizing: border-box;
     }
 }
