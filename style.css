@@ -90,11 +90,11 @@ body {
 }
 
 /* small screens */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .card {
         grid-template-columns: 1fr;
         padding: 20px;
-      height: 70vh;           /* 70% of screen height */
+      height: 85vh;          
         margin: 5vh auto;   
         box-sizing: border-box;
           overflow: auto; 
