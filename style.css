@@ -2,12 +2,12 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 html,
 body {
-    height: 100%
+    height: 100%;
 }
 
 body {
@@ -16,7 +16,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: #eaf0ff;
     background: linear-gradient(135deg, #0f172a 0%, #071124 40%, #00172b 100%);
-    overflow: hidden;
+    overflow-y: auto; /* allow vertical scroll */
+    overscroll-behavior-y: contain; /* prevent scroll chaining on mobile */
 }
 
 /* ========== VIBRANT ANIMATED BACKDROP ========== */
@@ -30,7 +31,13 @@ body {
 .gradient {
     position: absolute;
     inset: -25% -25% -25% -25%;
-    background: conic-gradient(from 180deg at 50% 50%, rgba(96, 165, 250, 0.12), rgba(139, 92, 246, 0.12), rgba(255, 94, 109, 0.08), rgba(96, 165, 250, 0.12));
+    background: conic-gradient(
+        from 180deg at 50% 50%, 
+        rgba(96, 165, 250, 0.12), 
+        rgba(139, 92, 246, 0.12), 
+        rgba(255, 94, 109, 0.08), 
+        rgba(96, 165, 250, 0.12)
+    );
     filter: blur(60px) saturate(120%);
     transform: translateZ(0);
     animation: slowRotate 18s linear infinite;
@@ -47,11 +54,10 @@ body {
 
 @keyframes slowRotate {
     0% {
-        transform: rotate(0deg) translateZ(0)
+        transform: rotate(0deg) translateZ(0);
     }
-
     100% {
-        transform: rotate(360deg) translateZ(0)
+        transform: rotate(360deg) translateZ(0);
     }
 }
 
@@ -64,6 +70,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 28px;
+    overflow-y: auto; /* enable vertical scroll if content overflows */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
 }
 
 .card {
@@ -82,10 +90,12 @@ body {
 }
 
 /* small screens */
-@media (max-width:900px) {
+@media (max-width: 700px) {
     .card {
         grid-template-columns: 1fr;
-        padding: 20px
+        padding: 20px;
+        max-width: 100%; /* full width on small devices */
+        box-sizing: border-box;
     }
 }
 
@@ -127,14 +137,14 @@ h1 {
 p.lead {
     margin-top: 6px;
     color: rgba(234, 240, 255, 0.8);
-    font-size: 13px
+    font-size: 13px;
 }
 
 .searchRow {
     display: flex;
     gap: 12px;
     margin-top: 8px;
-    align-items: center
+    align-items: center;
 }
 
 .input {
@@ -146,7 +156,7 @@ p.lead {
     background: rgba(255, 255, 255, 0.02);
     color: #fff;
     font-size: 15px;
-    transition: transform .12s ease, box-shadow .12s ease;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .input:focus {
@@ -163,11 +173,11 @@ p.lead {
     border: none;
     cursor: pointer;
     box-shadow: 0 10px 28px rgba(45, 116, 255, 0.12);
-    transition: transform .14s ease;
+    transition: transform 0.14s ease;
 }
 
 .btn:active {
-    transform: scale(.98) translateY(1px)
+    transform: scale(0.98) translateY(1px);
 }
 
 /* quick actions */
@@ -175,7 +185,7 @@ p.lead {
     display: flex;
     gap: 8px;
     margin-top: 10px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 .chip {
@@ -186,11 +196,11 @@ p.lead {
     color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.04);
-    transition: transform .12s ease;
+    transition: transform 0.12s ease;
 }
 
 .chip:hover {
-    transform: translateY(-4px)
+    transform: translateY(-4px);
 }
 
 /* small stats */
@@ -198,7 +208,7 @@ p.lead {
     display: flex;
     gap: 10px;
     margin-top: 18px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 .stat {
@@ -208,19 +218,19 @@ p.lead {
     border-radius: 12px;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.03);
-    text-align: center
+    text-align: center;
 }
 
 .stat strong {
     display: block;
     font-size: 18px;
     color: #fff;
-    margin-bottom: 6px
+    margin-bottom: 6px;
 }
 
 .muted {
     font-size: 12px;
-    color: rgba(234, 240, 255, 0.7)
+    color: rgba(234, 240, 255, 0.7);
 }
 
 /* ========== RIGHT PANEL ========== */
@@ -238,6 +248,7 @@ p.lead {
     position: relative;
 }
 
+/* Icon box */
 .iconBox {
     width: 160px;
     height: 160px;
@@ -248,21 +259,22 @@ p.lead {
     border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+/* Temperature */
 .bigTemp {
     font-size: 48px;
     font-weight: 800;
-    color: #fff
+    color: #fff;
 }
 
 .cond {
     font-size: 15px;
     color: rgba(255, 255, 255, 0.9);
-    margin-top: 6px
+    margin-top: 6px;
 }
 
 .meta {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.65)
+    color: rgba(255, 255, 255, 0.65);
 }
 
 /* ========== POPUP RESULT CARD (animated, inside right) ========== */
@@ -333,35 +345,35 @@ p.lead {
 
 @keyframes spin {
     to {
-        transform: rotate(360deg)
+        transform: rotate(360deg);
     }
 }
 
 /* ========== RESPONSIVE TWEAKS ========== */
-@media (max-width:480px) {
+@media (max-width: 480px) {
     .card {
         padding: 16px;
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
 
     .iconBox {
         width: 120px;
-        height: 120px
+        height: 120px;
     }
 
     .bigTemp {
-        font-size: 40px
+        font-size: 40px;
     }
 
     .result {
         min-width: 85%;
-        top: 12%
+        top: 12%;
     }
 }
 
 /* ========== UTILS ========== */
 .hidden {
-    display: none !important
+    display: none !important;
 }
 
 /* Style suggestion items */
@@ -374,23 +386,39 @@ p.lead {
     background: rgba(109, 211, 244, 0.2);
 }
 
+/* ========== FIXED RIGHT FOOTER ========== */
 .right-footer {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    bottom: 10px; /* slight gap from bottom */
+    right: 10px;  /* fixed to right side */
+    left: auto; /* override previous left */
+    width: auto; /* no full width */
     display: flex;
-    justify-content: center;
-    /* center the text horizontally */
+    justify-content: flex-end; /* align right */
     align-items: center;
     gap: 15px;
-     /* spacing between items */
-    background: rgba(93, 96, 124, 0);  /* optional: translucent background */
-    padding: 10px 0;
+    border-radius:1.5cap;
+    border-radius:1.5cap;
+    background: rgba(93, 96, 124, 0.371);  
+    padding: 10px 16px;
+    z-index: 1000; /* on top */
+    font-size: 14px;
+}
+
+/* On mobile, center footer and reduce size */
+@media (max-width: 480px) {
+    .right-footer {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        justify-content: center;
+        padding: 8px 0;
+        font-size: 13px;
+    }
 }
 
 .right-footer a {
-
     color: #6dd3f4;
     text-decoration: none;
     display: inline-block;
